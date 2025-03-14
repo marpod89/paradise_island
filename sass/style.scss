@@ -30,7 +30,7 @@ body {
 	background-color: none;
 	border: 1px solid transparent;
 	cursor: pointer;
-	z-index: 100;
+	z-index: 1000;
 
 	&:focus {
 		outline: none;
@@ -72,6 +72,61 @@ body {
 	}
 }
 
+.nav {
+	position: fixed;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100%;
+	transform: translateX(100%);
+	transition: .5s cubic-bezier(0.65, 0.05, 0.36, 1);
+	background-image: $blue-gradient-solid;
+	z-index: 100;
+
+
+	&--active{
+		transform: translateX(0);
+	}
+	&__item {
+		position: relative;
+		display: block;
+		margin: 0.5em 4em;
+		padding: 0.5em 2em;
+		font-size: 3rem;
+		color: $pure-white;
+		text-decoration: none;
+		&::before {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 3px;
+			height: 100%;
+			transform: scaleY(0);
+			background-color: $pure-white;
+			content:'';
+			transition: transform .3s;
+		}
+
+		&:hover::before{
+			transform: scaleY(1);
+		}
+	}
+}
+@keyframes navItemaAnimation{
+from{
+	transform: translateX(200%);
+}
+to{
+	transform: translateX(0);
+}
+}
+
+.nav-items-animation{
+	animation: navItemaAnimation 1s both;
+	animation-delay: .3s;
+}
 // Header -----------
 
 .header {
@@ -131,19 +186,19 @@ body {
 			font-size: 2.2rem;
 		}
 
-		&__btn{
+		&__btn {
 			font-size: 1.6rem;
 		}
 	}
 }
 
-@media (min-width: 992px){
-	.burger-btn{
+@media (min-width: 992px) {
+	.burger-btn {
 		top: 50px;
 		right: 50px;
 	}
 
-	.header{
+	.header {
 		background-image: $blue-gradient, url('../img/beach-1868047_1920.jpg');
 
 		&__heading {
