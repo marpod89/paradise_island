@@ -20,6 +20,7 @@ body {
 	font-size: 1.6rem;
 }
 
+
 // Nav------
 
 .burger-btn {
@@ -125,6 +126,12 @@ body {
 .nav-items-animation {
 	animation: navItemaAnimation 1s both;
 	animation-delay: 0.3s;
+}
+
+.black-bars-color,
+.black-bars-color::after,
+.black-bars-color::before {
+	background-color: $dark;
 }
 // Header -----------
 
